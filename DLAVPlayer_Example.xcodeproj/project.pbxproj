@@ -18,6 +18,7 @@
 		626828331B58DBE900EDB246 /* DLPlayerLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6268282E1B58DBE900EDB246 /* DLPlayerLayerView.m */; };
 		626828341B58DBE900EDB246 /* DLAVPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 626828311B58DBE900EDB246 /* DLAVPlayer.bundle */; };
 		626828371B58DC0000EDB246 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626828361B58DC0000EDB246 /* AVFoundation.framework */; };
+		627762A41B58E0AF002A5F9C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 627762A31B58E0AF002A5F9C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		6268282F1B58DBE900EDB246 /* DLAVPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVPlayer.h; sourceTree = "<group>"; };
 		626828311B58DBE900EDB246 /* DLAVPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DLAVPlayer.bundle; sourceTree = "<group>"; };
 		626828361B58DC0000EDB246 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		627762A31B58E0AF002A5F9C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		626827F71B58DBCE00EDB246 = {
 			isa = PBXGroup;
 			children = (
+				627762A31B58E0AF002A5F9C /* README.md */,
 				626828291B58DBE900EDB246 /* DLAVPlayer */,
 				626828021B58DBCE00EDB246 /* DLAVPlayer_Example */,
 				6268281C1B58DBCE00EDB246 /* DLAVPlayer_ExampleTests */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627762A41B58E0AF002A5F9C /* README.md in Sources */,
 				6268280C1B58DBCE00EDB246 /* ViewController.m in Sources */,
 				626828321B58DBE900EDB246 /* DLPlayerControlsView.m in Sources */,
 				626828091B58DBCE00EDB246 /* AppDelegate.m in Sources */,
@@ -472,6 +476,7 @@
 				626828251B58DBCE00EDB246 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		626828261B58DBCE00EDB246 /* Build configuration list for PBXNativeTarget "DLAVPlayer_ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +485,7 @@
 				626828281B58DBCE00EDB246 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
