@@ -10,4 +10,4 @@
 *   在线资源来自**`盛大音乐`[http://www.sdyinyue.net](http://www.sdyinyue.net)**地址长期有效，跟多资源请自行获取
 *   在线资源来自**`酷我音乐`[http://www.kuwo.cn](http://www.kuwo.cn)**地址长期有效，跟多资源请自行获取
 
-![Alt Text](https://github.com/{yin329039646}/{DLAVPlayer_Example}/DLAVPlayer/source/Iphone5C.gif)
+![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)
