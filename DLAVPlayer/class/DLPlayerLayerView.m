@@ -189,7 +189,7 @@
             {
                 return total;
             };
-//            [self getThumbnailImageForAsset:_videoInfo];
+//            [self getThumbnailImageForAsset:_videoInfo];//截图
             NSArray *array = [_videoInfo tracksWithMediaType:AVMediaTypeVideo];
             if (array.count>0)
             {
@@ -197,7 +197,7 @@
                 _movieSize = [track naturalSize];
                 if (!full)
                 {
-                    [self.player seekToTime:CMTimeMakeWithSeconds(1,2)];
+//                    [self.player seekToTime:CMTimeMakeWithSeconds(1,2)];//指定播放时间
                     [self frameChangedisTransForm:NO newFrame:CGRectZero];
                 }
             }
