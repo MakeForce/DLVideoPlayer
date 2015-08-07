@@ -66,6 +66,19 @@
     _controlsView.playCallBack = ^(UIButton *sender){
         if (!sender.selected)
         {
+            if (weekSelf.player == nil) {
+                if (!weekSelf.videoInfo) {
+                    weekSelf.videoInfo = [[AVURLAsset alloc] initWithURL:weekSelf.videoUrl options:nil];
+                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:weekSelf.videoInfo];
+                    weekSelf.player = [AVPlayer playerWithPlayerItem:playerItem];
+                    [weekSelf.playerLayer setPlayer:weekSelf.player];
+                    [weekSelf addObServerWithPlayerItme:weekSelf.player.currentItem];
+                    [weekSelf.player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+                        
+                        [weekSelf.controlsView changedProgress:CMTimeGetSeconds(time) andTotal:CMTimeGetSeconds([weekSelf.videoInfo duration])];
+                    }];
+                }
+            }
             [weekSelf.player play];
         }
         else
@@ -95,23 +108,14 @@
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         [self addSubview:_backView];
     }
-    if (_videoInfo == nil)
+    if (_playerLayer == nil)
     {
         [self getWindown];
         self.tag = 1010101;
-        _videoInfo = [[AVURLAsset alloc] initWithURL:_videoUrl options:nil];
-        AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:_videoInfo];
-        _player = [AVPlayer playerWithPlayerItem:playerItem];
-        _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        
+        _playerLayer = [[AVPlayerLayer alloc] init];
         [_playerLayer setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         [_backView.layer addSublayer:_playerLayer];
-        [self addObServerWithPlayerItme:_player.currentItem];
-//        id __unsafe_unretained weekSelf = self;
-        __weak __typeof(self)weekSelf = self;
-        [self.player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            
-            [weekSelf.controlsView changedProgress:CMTimeGetSeconds(time) andTotal:CMTimeGetSeconds([weekSelf.videoInfo duration])];
-        }];
     }
     else
     {
@@ -185,7 +189,7 @@
             {
                 return total;
             };
-            [self getThumbnailImageForAsset:_videoInfo];
+//            [self getThumbnailImageForAsset:_videoInfo];
             NSArray *array = [_videoInfo tracksWithMediaType:AVMediaTypeVideo];
             if (array.count>0)
             {
@@ -232,7 +236,7 @@
     }
 //    CGRect tempFrame = [self getNewFrameWithscreenSize:screenSize];
     [_playerLayer setFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
-    [_playerLayer setBackgroundColor:[UIColor blackColor].CGColor];
+    [_playerLayer setBackgroundColor:[UIColor grayColor].CGColor];
 }
 -(CGRect)getNewFrameWithscreenSize:(CGSize)screenSize
 {

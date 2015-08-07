@@ -46,7 +46,7 @@
         
         _currentTimerLabel = [[UILabel alloc] init];
         [_currentTimerLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _currentTimerLabel.text = @"--:--";
+        _currentTimerLabel.text = @"00:00";
         [_currentTimerLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:_currentTimerLabel];
         
@@ -62,7 +62,7 @@
         
         _durationLabel = [[UILabel alloc] init];
         [_durationLabel setFont:[UIFont systemFontOfSize:12.0]];
-        _durationLabel.text = @"--:--";
+        _durationLabel.text = @"00:00";
         [_durationLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:_durationLabel];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(14.5)-[_durationLabel(==16)]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:NSDictionaryOfVariableBindings(_durationLabel)]];
@@ -172,7 +172,7 @@
 }
 -(void)videoLoadError
 {
-    _currentTimerLabel.text = @"--:--";
-    _durationLabel.text = @"--:--";
+    _currentTimerLabel.text = @"00:00";
+    _durationLabel.text = @"00:00";
 }
 @end
