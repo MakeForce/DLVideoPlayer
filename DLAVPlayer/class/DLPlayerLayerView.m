@@ -37,6 +37,7 @@
     if (self)
     {
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        [_backView setBackgroundColor:[UIColor grayColor]];
         [self addSubview:_backView];
 
         _hasKvo = NO;
@@ -59,11 +60,15 @@
     _oldFrame = self.frame;
     _full = NO;
     _controlsView = [[DLPlayerControlsView alloc] init];
-    [self addSubview:_controlsView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_controlsView]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_controlsView(==45.0)]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
+    [_controlsView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_backView addSubview:_controlsView];
+    [_backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_controlsView]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
+    [_backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_controlsView(==45.0)]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
     __weak __typeof(self)weekSelf = self;
     _controlsView.playCallBack = ^(UIButton *sender){
+        if (weekSelf.oldSuperView==nil) {
+            weekSelf.oldSuperView = weekSelf.superview;
+        }
         if (!sender.selected)
         {
             if (weekSelf.player == nil) {
@@ -88,6 +93,9 @@
         [sender setSelected:!sender.selected];
     };
     _controlsView.fullCallBack = ^(UIButton *sender){
+        if (weekSelf.oldSuperView==nil) {
+            weekSelf.oldSuperView = weekSelf.superview;
+        }
         [sender setSelected: !sender.selected];
         [weekSelf fullScrenn:sender.selected];
     };
@@ -106,6 +114,7 @@
     if (_backView == nil)
     {
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        [_backView setBackgroundColor:[UIColor grayColor]];
         [self addSubview:_backView];
     }
     if (_playerLayer == nil)
@@ -364,6 +373,7 @@
 }
 -(void)dealloc
 {
+    DLLog(@"%@  %@   Retain count is %ld", NSStringFromClass([self class]),NSStringFromSelector(_cmd),CFGetRetainCount((__bridge CFTypeRef)self));
     [self removeObserverWithPlayerItem:self.player.currentItem];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

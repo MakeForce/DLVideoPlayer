@@ -19,9 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    dlPlayer = [[DLPlayerLayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
-    [dlPlayer setVideoUrl:[NSURL URLWithString:TestMovieUrl]];
-    [self.view addSubview:dlPlayer];
+//    dlPlayer = [[DLPlayerLayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+//    [dlPlayer setVideoUrl:[NSURL URLWithString:TestMovieUrl]];
+//    [self.view addSubview:dlPlayer];
 }
 -(void)viewDidAppear:(BOOL)animated
 {

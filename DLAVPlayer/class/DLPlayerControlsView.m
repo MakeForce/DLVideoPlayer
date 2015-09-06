@@ -24,7 +24,6 @@
     self = [super init];
     if (self)
     {
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self setBackgroundColor:DLCOLORRGBA(238, 239, 241, 0.5)];
         
         _isAnimation = NO;

@@ -19,9 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    dlPlayer = [[DLPlayerLayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    dlPlayer = [[DLPlayerLayerView alloc] initWithFrame:CGRectMake(0, 64, 320, 180)];
     [dlPlayer setVideoUrl:[NSURL URLWithString:TestMovieUrl]];
     [self.view addSubview:dlPlayer];
+    
 }
 
 - (void)didReceiveMemoryWarning {
