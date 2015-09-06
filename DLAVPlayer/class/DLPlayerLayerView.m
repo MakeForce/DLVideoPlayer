@@ -8,14 +8,11 @@
 
 #import "DLPlayerLayerView.h"
 @interface DLPlayerLayerView()
-{
-    CGRect oldFrame;
-    BOOL full;
-    BOOL hasKvo;
-//    __block UIImageView *videoImageView;
-    UIWindow *tempWindow;
-    UIView *oldSuperView;//原容器
-}
+@property (nonatomic, assign) CGRect oldFrame;
+@property (nonatomic, assign) BOOL full;
+@property (nonatomic, assign) BOOL hasKvo;
+@property (nonatomic, weak) UIWindow *tempWindow;
+@property (nonatomic, weak) UIView *oldSuperView;//原容器
 @property (nonatomic, strong) AVURLAsset *videoInfo;//视频信息
 @property (nonatomic, strong) AVPlayer *player;//播放器
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;//播放器场景
@@ -29,7 +26,7 @@
     self = [super initWithFrame:CGRectMake(0, 0, UISCREEN_BOUNDS_SIZE.width, UISCREEN_BOUNDS_SIZE.width*(180.0/UISCREEN_BOUNDS_SIZE.width))];
     if (self)
     {
-        hasKvo = NO;
+        _hasKvo = NO;
         self.videoUrl = url;
     }
     return self;
@@ -42,7 +39,7 @@
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:_backView];
 
-        hasKvo = NO;
+        _hasKvo = NO;
     }
     return self;
 }
@@ -51,7 +48,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        hasKvo = NO;
+        _hasKvo = NO;
         self.videoUrl = url;
     }
     return self;
@@ -59,9 +56,12 @@
 #pragma mark    控制器
 -(void)createControls
 {
-    oldFrame = self.frame;
-    full = NO;
-    _controlsView = [[DLPlayerControlsView alloc] initWithPlayerView:_backView];
+    _oldFrame = self.frame;
+    _full = NO;
+    _controlsView = [[DLPlayerControlsView alloc] init];
+    [self addSubview:_controlsView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_controlsView]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_controlsView(==45.0)]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_controlsView)]];
     __weak __typeof(self)weekSelf = self;
     _controlsView.playCallBack = ^(UIButton *sender){
         if (!sender.selected)
@@ -119,7 +119,7 @@
     }
     else
     {
-        if(hasKvo == YES)
+        if(_hasKvo == YES)
         {
             [self removeObserverWithPlayerItem:_player.currentItem];
         }
@@ -167,13 +167,13 @@
 {
     [tempItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [tempItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-    hasKvo = YES;
+    _hasKvo = YES;
 }
 -(void)removeObserverWithPlayerItem:(AVPlayerItem *)tempItem
 {
     [tempItem removeObserver:self forKeyPath:@"status"];
     [tempItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-    hasKvo = NO;
+    _hasKvo = NO;
 }
 #pragma mark    监听
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -195,7 +195,7 @@
             {
                 AVAssetTrack *track = [array objectAtIndex:0];
                 _movieSize = [track naturalSize];
-                if (!full)
+                if (!_full)
                 {
 //                    [self.player seekToTime:CMTimeMakeWithSeconds(1,2)];//指定播放时间
                     [self frameChangedisTransForm:NO newFrame:CGRectZero];
@@ -205,7 +205,7 @@
         else if (status == AVPlayerStatusFailed)
         {
             DLLog(@"加载失败");
-            if (hasKvo == YES)
+            if (_hasKvo == YES)
             {
                 [self removeObserverWithPlayerItem:self.player.currentItem];
             }
@@ -263,7 +263,7 @@
     if (isFull)
     {
         [self removeFromSuperview];
-        [tempWindow addSubview:self];
+        [_tempWindow addSubview:self];
         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
         CGFloat height = [[UIScreen mainScreen] bounds].size.width;
         CGFloat width = [[UIScreen mainScreen] bounds].size.height;
@@ -274,23 +274,23 @@
             [self frameChangedisTransForm:YES newFrame:newFrame];
             _backView.frame = CGRectMake(0, 0, width, height);
         } completion:^(BOOL finished) {
-            full = YES;
+            _full = YES;
         }];
     }
     else
     {
-        if (full)
+        if (_full)
         {
             [self removeFromSuperview];
-            [oldSuperView addSubview:self];
+            [_oldSuperView addSubview:self];
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             [UIView animateWithDuration:0.3f animations:^{
                 [self setTransform:CGAffineTransformIdentity];
-                self.frame = oldFrame;
+                self.frame = _oldFrame;
                 [self frameChangedisTransForm:NO newFrame:CGRectZero];
-                _backView.frame = CGRectMake(0, 0, oldFrame.size.width, oldFrame.size.height);
+                _backView.frame = CGRectMake(0, 0, _oldFrame.size.width, _oldFrame.size.height);
             } completion:^(BOOL finished) {
-                full = NO;
+                _full = NO;
             }];
         }
     }
@@ -352,11 +352,11 @@
 }
 -(void)getWindown
 {
-    tempWindow = [[UIApplication sharedApplication] keyWindow];
-    if (!tempWindow) {
-        tempWindow = [[[UIApplication sharedApplication] windows] firstObject];
+    _tempWindow = [[UIApplication sharedApplication] keyWindow];
+    if (!_tempWindow) {
+        _tempWindow = [[[UIApplication sharedApplication] windows] firstObject];
     }
-    oldSuperView = self.superview;
+    _oldSuperView = self.superview;
 }
 -(void)tapAction
 {

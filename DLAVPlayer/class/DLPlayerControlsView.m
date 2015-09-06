@@ -9,10 +9,7 @@
 #import "DLPlayerControlsView.h"
 #import "DLAVPlayer.h"
 @interface DLPlayerControlsView()
-{
-    BOOL isAnimation;
-}
-
+@property (nonatomic, assign) BOOL isAnimation;
 @property (nonatomic, strong) UIButton *fullBtn;//全屏按钮
 @property (nonatomic, strong) UILabel *currentTimerLabel;//当前播放时间
 @property (nonatomic, strong) __block UILabel *durationLabel;//总时间
@@ -22,7 +19,7 @@
 
 @implementation DLPlayerControlsView
 #pragma mark    初始化
--(instancetype)initWithPlayerView:(UIView *)playerView
+-(instancetype)init
 {
     self = [super init];
     if (self)
@@ -30,12 +27,9 @@
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self setBackgroundColor:DLCOLORRGBA(238, 239, 241, 0.5)];
         
-        isAnimation = NO;
+        _isAnimation = NO;
         _canFull = YES;
         _disappear = YES;
-        [playerView addSubview:self];
-        [playerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[self]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self)]];
-        [playerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(==45.0)]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self)]];
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_playBtn setImage:[UIImage imageNamed:@"DLAVPlayer.bundle/DLPlayer_play_btn"] forState:UIControlStateNormal];
@@ -126,15 +120,15 @@
 #pragma mark    展示或隐藏
 -(void)showOrhiddenWithDuration:(NSTimeInterval)duration
 {
-    if (!isAnimation)
+    if (!_isAnimation)
     {
         if (self.hidden)
         {
-            isAnimation = YES;
+            _isAnimation = YES;
             [UIView animateWithDuration:duration animations:^{
                 self.alpha = 1;
             } completion:^(BOOL finished) {
-                isAnimation = NO;
+                _isAnimation = NO;
                 self.hidden = NO;
                 if (self.disappear)
                 {
@@ -144,11 +138,11 @@
         }
         else
         {
-            isAnimation = YES;
+            _isAnimation = YES;
             [UIView animateWithDuration:duration animations:^{
                 self.alpha = 0;
             } completion:^(BOOL finished) {
-                isAnimation = NO;
+                _isAnimation = NO;
                 self.hidden = YES;
             }];
         }

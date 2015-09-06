@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		622404A71B5CC3D800633758 /* Iphone5C.gif in Resources */ = {isa = PBXBuildFile; fileRef = 622404A61B5CC3D800633758 /* Iphone5C.gif */; };
+		624AEA7C1B9BDCFF005A6F1D /* Test1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624AEA7B1B9BDCFF005A6F1D /* Test1ViewController.m */; };
 		626828061B58DBCE00EDB246 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626828051B58DBCE00EDB246 /* main.m */; };
 		626828091B58DBCE00EDB246 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 626828081B58DBCE00EDB246 /* AppDelegate.m */; };
 		6268280C1B58DBCE00EDB246 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6268280B1B58DBCE00EDB246 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		622404A61B5CC3D800633758 /* Iphone5C.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Iphone5C.gif; sourceTree = "<group>"; };
+		624AEA7A1B9BDCFF005A6F1D /* Test1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test1ViewController.h; sourceTree = "<group>"; };
+		624AEA7B1B9BDCFF005A6F1D /* Test1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test1ViewController.m; sourceTree = "<group>"; };
 		626828001B58DBCE00EDB246 /* DLAVPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLAVPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		626828041B58DBCE00EDB246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		626828051B58DBCE00EDB246 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		626828031B58DBCE00EDB246 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				624AEA7A1B9BDCFF005A6F1D /* Test1ViewController.h */,
+				624AEA7B1B9BDCFF005A6F1D /* Test1ViewController.m */,
 				626828041B58DBCE00EDB246 /* Info.plist */,
 				626828051B58DBCE00EDB246 /* main.m */,
 			);
@@ -282,6 +287,7 @@
 				6268280C1B58DBCE00EDB246 /* ViewController.m in Sources */,
 				626828321B58DBE900EDB246 /* DLPlayerControlsView.m in Sources */,
 				626828091B58DBCE00EDB246 /* AppDelegate.m in Sources */,
+				624AEA7C1B9BDCFF005A6F1D /* Test1ViewController.m in Sources */,
 				626828061B58DBCE00EDB246 /* main.m in Sources */,
 				626828331B58DBE900EDB246 /* DLPlayerLayerView.m in Sources */,
 			);

@@ -31,19 +31,11 @@
 /**
  *  控制tools是否自动隐藏(默认YES)
  */
-@property (nonatomic) BOOL disappear;
+@property (nonatomic, assign) BOOL disappear;
 /**
  *  是否能够全屏
  */
-@property (nonatomic) BOOL canFull;
-/**
- *  初始化播放器控制器
- *
- *  @param playerView 播放器视图
- *
- *  @return 播放控制器对象
- */
--(instancetype)initWithPlayerView:(UIView *)playerView;
+@property (nonatomic, assign) BOOL canFull;
 /**
  *  控制器展示或隐藏
  *

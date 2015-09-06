@@ -7,9 +7,11 @@
 //
 
 #import "Test1ViewController.h"
-
+#import "DLAVPlayer.h"
 @interface Test1ViewController ()
-
+{
+    DLPlayerLayerView *dlPlayer;
+}
 @end
 
 @implementation Test1ViewController
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    dlPlayer = [[DLPlayerLayerView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    [dlPlayer setVideoUrl:[NSURL URLWithString:TestMovieUrl]];
+    [self.view addSubview:dlPlayer];
 }
 
 - (void)didReceiveMemoryWarning {
