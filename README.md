@@ -22,6 +22,7 @@
 ***
 ## 联系作者
 - QQ群：<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ea3facbb39310325902e7bbdf4de37392e49518476a58c5c0110352309be4887"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="IOS开发交流群" title="IOS开发交流群"></a>
+
 ## 截图
 
-![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)
+- ![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)
