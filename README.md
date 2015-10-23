@@ -2,8 +2,6 @@
 *  该播放器理论上支持6.0及其以上但6.0未测试，请测后再用
 *  AVFoundation框架中的AVPlayer，所以需要使用的请在项目中加入AVFoundation框架
 *  在全屏状态下在偏好文件中增加 key： View controller-based status bar appearance  value: NO
-*  如果有其他的需求的话，请加群(151180718)说明，如果确实需要的人很多的话我在更新
-
 
 ## 资源：
 *   在线资源来自**`车载MV`[http://www.mm123m.com](http://www.mm123m.com)**地址有效期很短，倘若无法使用，请自行前往该网站获取资源地址
@@ -22,7 +20,8 @@
     - 2、crash为题正式干掉
 
 ***
-
+## 联系作者
+- QQ群：<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ea3facbb39310325902e7bbdf4de37392e49518476a58c5c0110352309be4887"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="IOS开发交流群" title="IOS开发交流群"></a>
 ## 截图
 
 ![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)
