@@ -24,14 +24,14 @@ Pod::Spec.new do |s|
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.author             = { "liuguotao" => "404461455@qq.com" }
+  #s.author             = { "liuguotao" => "404461455@qq.com" }
   # Or just: s.author    = "kuhai"
   # s.authors            = { "kuhai" => "404461455@qq.com" }
   # s.social_media_url   = "http://twitter.com/kuhai"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   # s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "6.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
