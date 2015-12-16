@@ -245,7 +245,11 @@
     }
 //    CGRect tempFrame = [self getNewFrameWithscreenSize:screenSize];
     [_playerLayer setFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
-    [_playerLayer setBackgroundColor:[UIColor grayColor].CGColor];
+    if (!transform) {
+        [_playerLayer setBackgroundColor:[UIColor grayColor].CGColor];
+    }else{
+        [_playerLayer setBackgroundColor:[UIColor blackColor].CGColor];
+    }
 }
 -(CGRect)getNewFrameWithscreenSize:(CGSize)screenSize
 {
