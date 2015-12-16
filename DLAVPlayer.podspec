@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source_files  = "DLAVPlayer/class/*.{h,m}"
+  s.source_files  = "DLAVPlayer/*.{h,m}"
   s.resources = "DLAVPlayer/source/DLAVPlayer.bundle"
 
   # s.public_header_files = "Classes/**/*.h"
