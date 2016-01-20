@@ -27,4 +27,5 @@
 
 ## 截图
 
-- ![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)
+<!--- ![Alt Text](https://github.com/yin329039646/DLAVPlayer_Example/blob/master/DLAVPlayer/source/Iphone5C.gif)-->
+[![iPhone screenshot](DLAVPlayer/source/Iphone5C.gif)](DLAVPlayer/source/Iphone5C.gif)
